@@ -1,0 +1,21 @@
+# App replacements
+alias top="htop"
+alias du="ncdu"
+alias df="pydf"
+alias vi="vim"
+# Command improvements
+alias mkdir="mkdir -pv"
+alias histgrep="history | grep"
+alias lsh="ls -lah"
+alias la="ls -lah"
+alias ll="ls -lah"
+alias tar_extract="tar xvpf"
+alias tar_compress="tar cvpf"
+alias tar_list="tar tvpf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias ssh="ssh -X"
+alias ping="ping -c 32"
+alias salt="sudo salt"
+dd_status="sudo kill -USR1 $(pgrep ^dd)"
+# Functions
+ping_date () { ping $1 | while read pong; do echo $(date +%c) — $pong;done }
