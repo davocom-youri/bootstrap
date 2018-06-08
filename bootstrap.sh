@@ -48,7 +48,8 @@ TMPFILE="/tmp/bootstrap_$USER.cronout"
     printf "\n"
 read -e -p "Please input alerting Mail: " -i "email@example.com" ALERTMAILADDR
 read -e -p "Please input Backup Destination: " -i "/var/backup" BACKDIR
-    printf "\n"
+mkdir $BACKDIR
+printf "\n"
 if [ ! -f $HOME/bin/vm-backup.sh ]; then
         cp $PWD/scripts/vm-backup.sh $HOME/bin/vm-backup.sh
         chmod +x $HOME/bin/vm-backup.sh
