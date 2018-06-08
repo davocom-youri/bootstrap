@@ -12,6 +12,13 @@ printf "\nInstall dotfiles for $USER ? [y/N]\n"
 read -n 1 CONTINUE
 	if [ $CONTINUE == "y" ]; then
         printf "Copy dotfiles in $PWD/$CONFDIR to $HOME\n" 
+    rm $HOME/.bashrc
+    rm $HOME/.alias
+    rm $HOME/.screenrc
+    rm $HOME/.vimrc
+    rm $HOME/.guake.autostart
+    rm $HOME/.conkyrc
+    rm $HOME/.config/autostart/conky.desktop
     cp $PWD/$CONFDIR/ssh_config $HOME/.ssh/config
         printf "n\Copied ssh_config"
     cp $PWD/$CONFDIR/.bashrc $HOME/.bashrc
