@@ -30,7 +30,7 @@ conky.config = {
     background = true,
     border_width = 1,
     cpu_avg_samples = 2,
-    default_color = 'white',
+    default_color = 'grey',
     default_outline_color = 'white',
     default_shade_color = 'white',
     draw_borders = false,
@@ -69,38 +69,31 @@ conky.config = {
 }
 
 conky.text = [[
-${color green}HOST: ${color red}$nodename$color 
-${color green}Load$color $loadavg
-${color green}Processes:$color $processes  ${color green}Running:$color $running_processes
+${color green}HOST: ${color red}$nodename$color
+$sysname-$kernel$color-$machine 
+${color green}CPU$color $freq MHz $cpubar
+${color green}RAM$color $mem/$memmax $membar
+${color green}UPTIME$color $uptime ${alignr}${color green}Load$color $loadavg
 
-$sysname-${color green}$kernel$color-$machine 
-UP ${color green}$uptime$color
-${color green}CPU TEMP${color} ${hwmon 1 temp 2}°C ${color green}GPU TEMP${color} ${hwmon 0 temp 1}°C
-${color green}FAN4${color} ${hwmon 1 fan 4} RPM ${color green}FAN5${color} ${hwmon 1 fan 5} RPM
+${color green}CPU TEMP${color} ${hwmon 1 temp 2}°C ${alignr}${color green}FAN4${color} ${hwmon 1 fan 4} RPM
+${color green}GPU TEMP${color} ${hwmon 0 temp 1}°C ${alignr}${color green}FAN5${color} ${hwmon 1 fan 5} RPM
 
-${color green}CPU$color $freq MHz ${color green}$color $cpu%${cpubar 10}
-${color green}RAM$color $mem/$memmax $memperc%${membar 10}
-#${cpugraph 20,130 07CC0D FF0000 -t} P ${alignr}  M ${memgraph 20,130 07CC0D FF0000 -t}
-#${color green}SWAP$color $swap$swapmax $swapperc%${swapbar 10}
-#${color green}WAN IP$color ${exec curl ipinfo.io/ip}
-${color green}eth0$color ${addrs eth0} 
-${color green}DOWN $color${downspeed eth0}${color green}▼$color ${alignr} ${color green}UP $color${upspeed eth0}${color green}▲$color 
-${downspeedgraph eth0 20,130 07CC0D FF0000 -t} ▼ ${alignr}  ▲ ${upspeedgraph eth0 20,130 07CC0D FF0000 -t}
-${color green}ROOT $color${fs_used /}/${fs_size /} ${fs_bar 10 /}
-${color green}VIRT $color${fs_used /var/lib/libvirt/images}/${fs_size /var/lib/libvirt/images} ${fs_bar 10 /var/lib/libvirt/images}
-${color green}BACK $color${fs_used /var/backup}/${fs_size /var/backup} ${fs_bar 10 /var/backup}
-${color green}HOME $color${fs_used /home}/${fs_size /home} ${fs_bar 10 /home}
-${color green}Read sda${color} ${diskio_read /dev/sda} ${alignr}${color green}Write: ${color}${diskio_write /dev/sda}	
-${diskiograph_read /dev/sda 20,130 07CC0D FF0000 -t} R${alignr} W ${diskiograph_write /dev/sda 20,130 07CC0D FF0000 -t}
-${color green}Read sdb${color} ${diskio_read /dev/sdb} ${alignr}${color green}Write: ${color}${diskio_write /dev/sdb}	
-${diskiograph_read /dev/sdb 20,130 07CC0D FF0000 -t} R${alignr} W ${diskiograph_write /dev/sdb 20,130 07CC0D FF0000 -t}
+${color green}ROOT $color${fs_used /}/${fs_size /} ${fs_bar 5 /}
+${color green}VIRT $color${fs_used /var/lib/libvirt/images}/${fs_size /var/lib/libvirt/images} ${fs_bar 5 /var/lib/libvirt/images}
+${color green}BACK $color${fs_used /var/backup}/${fs_size /var/backup} ${fs_bar 5 /var/backup}
+${color green}HOME $color${fs_used /home}/${fs_size /home} ${fs_bar 5 /home}
 
-${color purple}Name             PID     CPU%  MEM% $color
-${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
-${top name 5} ${top pid 5} ${top cpu 5} ${top mem 5}
+${color green}DOWN eth0 $color${downspeed eth0}${color green}▼$color ${alignr}${color green}UP eth0 $color${upspeed eth0}${color green}▲$color
+${color green}Read sda : ${color} ${diskio_read /dev/sda} ${alignr} ${color green}Read sdb : ${color} ${diskio_read /dev/sdb}
+${color green}Write sda : ${color}${diskio_write /dev/sda} ${alignr} ${color green}Write sdb : ${color}${diskio_write /dev/sdb}
+
+${color green}Processes:$color $processes ${alignr}${color green}Running:$color $running_processes
+${color purple}Name             ${alignr}PID     CPU%  MEM% $color
+${top name 1} ${alignr}${top pid 1} ${top cpu 1} ${top mem 1}
+${top name 2} ${alignr}${top pid 2} ${top cpu 2} ${top mem 2}
+${top name 3} ${alignr}${top pid 3} ${top cpu 3} ${top mem 3}
+${top name 4} ${alignr}${top pid 4} ${top cpu 4} ${top mem 4}
+${top name 5} ${alignr}${top pid 5} ${top cpu 5} ${top mem 5}
 
 ${color green}Port(s)${alignr}#Connections
 ${color}IN: ${tcp_portmon 1 32767 count}  OUT: ${tcp_portmon 32768 61000 count}${alignr} ALL: ${tcp_portmon 1 65535 count}
