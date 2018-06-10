@@ -12,6 +12,13 @@ printf "\nInstall dotfiles for $USER ? [y/N]\n"
 read -n 1 CONTINUE
 	if [ $CONTINUE == "y" ]; then
         printf "Copy dotfiles in $PWD/$CONFDIR to $HOME\n" 
+    rm $HOME/.bashrc
+    rm $HOME/.alias
+    rm $HOME/.screenrc
+    rm $HOME/.vimrc
+    rm $HOME/.guake.autostart
+    rm $HOME/.conkyrc
+    rm $HOME/.config/autostart/conky.desktop
     cp $PWD/$CONFDIR/ssh_config $HOME/.ssh/config
         printf "n\Copied ssh_config"
     cp $PWD/$CONFDIR/.bashrc $HOME/.bashrc
@@ -41,7 +48,8 @@ TMPFILE="/tmp/bootstrap_$USER.cronout"
     printf "\n"
 read -e -p "Please input alerting Mail: " -i "email@example.com" ALERTMAILADDR
 read -e -p "Please input Backup Destination: " -i "/var/backup" BACKDIR
-    printf "\n"
+mkdir $BACKDIR
+printf "\n"
 if [ ! -f $HOME/bin/vm-backup.sh ]; then
         cp $PWD/scripts/vm-backup.sh $HOME/bin/vm-backup.sh
         chmod +x $HOME/bin/vm-backup.sh
