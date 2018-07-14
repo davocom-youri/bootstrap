@@ -16,6 +16,7 @@ alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias ssh="ssh -X"
 alias ping="ping -c 32"
 alias salt="sudo salt"
-dd_status="sudo kill -USR1 $(pgrep ^dd)"
+alias dd_status="sudo kill -USR1 $(pgrep ^dd)"
+alias tree='tree -h --timefmt "%a, %Y %b %d %l:%M.%S"'
 # Functions
 ping_date () { ping $1 | while read pong; do echo $(date +%c) — $pong;done }
