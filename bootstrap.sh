@@ -36,6 +36,7 @@ else
 	cp $PWD/$CONFDIR/.bashrc_ROOT $HOME/.bashrc
         printf "\nCopied .bashrc"
 fi
+printf "\n"
 # Autostart
     mkdir $HOME/.config/autostart/ 
     cp $PWD/$CONFDIR/conky.desktop $HOME/.config/autostart/
