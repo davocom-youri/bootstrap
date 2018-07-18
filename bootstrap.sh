@@ -33,7 +33,7 @@ if [[ $USER == "root" ]]; then
 	cp $PWD/$CONFDIR/.bashrc_ROOT $HOME/.bashrc
         printf "\nCopied .bashrc"
 else
-	cp $PWD/$CONFDIR/.bashrc_ROOT $HOME/.bashrc
+	cp $PWD/$CONFDIR/.bashrc $HOME/.bashrc
         printf "\nCopied .bashrc"
 fi
 printf "\n"
