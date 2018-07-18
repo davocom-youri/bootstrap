@@ -21,8 +21,6 @@ read -n 1 CONTINUE
     rm $HOME/.config/autostart/conky.desktop
     cp $PWD/$CONFDIR/ssh_config $HOME/.ssh/config
         printf "n\Copied ssh_config"
-    cp $PWD/$CONFDIR/.bashrc $HOME/.bashrc
-        printf "\nCopied .bashrc"
     cp $PWD/$CONFDIR/.alias $HOME/.alias && sh $HOME/.bashrc
         printf "\nCopied .alias and Sourced $HOME/.bashrc"
     cp $PWD/$CONFDIR/.screenrc $HOME/.screenrc
@@ -31,6 +29,13 @@ read -n 1 CONTINUE
         printf "\nCopied .vimrc"
     cp $PWD/$CONFDIR/.conkyrc $HOME/.conkyrc
         printf "\nCopied .conkyrc\n"
+if [[ $USER == "root" ]]; then 
+	cp $PWD/$CONFDIR/.bashrc_ROOT $HOME/.bashrc
+        printf "\nCopied .bashrc"
+else
+	cp $PWD/$CONFDIR/.bashrc_ROOT $HOME/.bashrc
+        printf "\nCopied .bashrc"
+fi
 # Autostart
     mkdir $HOME/.config/autostart/ 
     cp $PWD/$CONFDIR/conky.desktop $HOME/.config/autostart/
@@ -101,12 +106,12 @@ crontab -l > $TMPFILE
         echo "#=================" >> $TMPFILE
         echo "# HW Checks       #" >> $TMPFILE
         echo "#=================" >> $TMPFILE
-        echo "0 * * * * $HOME/bin/diskcheck.sh $ALERTMAILADDR >/dev/null 2>&1" >> $TMPFILE
-        echo "0 * * * * $HOME/bin/loadmon.sh $ALERTMAILADDR >/dev/null 2>&1" >> $TMPFILE
+        echo "#0 * * * * $HOME/bin/diskcheck.sh $ALERTMAILADDR >/dev/null 2>&1" >> $TMPFILE
+        echo "#0 * * * * $HOME/bin/loadmon.sh $ALERTMAILADDR >/dev/null 2>&1" >> $TMPFILE
         echo "#=================" >> $TMPFILE
         echo "# Config Backup   #" >> $TMPFILE
         echo "#=================" >> $TMPFILE
-        echo "0 0 * * * /bin/tar cvzpf $BACKDIR/$HOSTNAME-config-\$(date +\%A).tar.gz /etc /var/spool /root" >> $TMPFILE
+        echo "#0 0 * * * /bin/tar cvzpf $BACKDIR/$HOSTNAME-config-\$(date +\%A).tar.gz /etc /var/spool /root" >> $TMPFILE
         echo "#=================" >> $TMPFILE
         echo "# VM-Backups      #" >> $TMPFILE
         echo "#=================" >> $TMPFILE
