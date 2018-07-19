@@ -71,4 +71,5 @@ Defaults        insults
 ## User privilege specification
 ##
 root    ALL = (ALL) ALL
-%davocom\\DAVO_ADMIN    ALL = (root) ALL
+#%SAMDOM\\SAMGRP    ALL = (root) ALL
+#%SAMGRP@SAMDOM    ALL = (root) ALL
