@@ -28,6 +28,6 @@ export EDITOR=/usr/bin/vim
 #Disable SSH_ASKPASS for GIT
 unset SSH_ASKPASS
 
-PS1="\n\[\e[32;1m\](\[\e[37;1m\]\u@\h[\t][\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
+PS1="\n\[\e[32;1m\](\[\e[39;1m\]\u@\h[\t][\e[32;1m\])-(\[\e[39;1m\]jobs:\j\[\e[32;1m\])-(\[\e[39;1m\]\w\[\e[32;1m\])\n(\[\[\e[39;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
 
 test -s ~/.alias && . ~/.alias || true
