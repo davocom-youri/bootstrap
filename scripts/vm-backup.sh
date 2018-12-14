@@ -29,8 +29,8 @@ mkdir -p "$BACKUP"
 #
 # Get the list of targets (disks) and the image paths.
 #
-TARGETS=`virsh domblklist "$DOMAIN" --details | grep ^file | grep -v 'cdrom' | grep -v 'floppy' | awk '{print $3}'`
-IMAGES=`virsh domblklist "$DOMAIN" --details | grep ^file | grep -v 'cdrom' | grep -v 'floppy' | awk '{print $4}'`
+TARGETS=`virsh domblklist "$DOMAIN" --details | grep ^file | grep -v 'cdrom' | grep -v 'floppy' | grep -v 'block' | awk '{print $3}'`
+IMAGES=`virsh domblklist "$DOMAIN" --details | grep ^file | grep -v 'cdrom' | grep -v 'floppy' | grep -v 'block' | awk '{print $4}'`
 
 #
 # Create the snapshot.
